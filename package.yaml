@@ -1,0 +1,101 @@
+name:                MerzbowNumberVis
+version:             0.1.0.0
+github:              "githubuser/MerzbowNumberVis"
+license:             BSD3
+author:              "Tilde Rose"
+maintainer:          "t1lde@protonmail.com"
+copyright:           "2020 Tilde Rose"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            HTML templated visualisation of Merzbow-adjacency via Discogs data.
+category:            Web
+
+dependencies:
+- mtl
+- http-client
+- http-types
+- aeson
+- deriving-aeson
+- http-client-tls
+- bytestring
+- text
+- exceptions
+
+ghc-options:
+    - -O2
+    - -Wall
+    - -Wcompat
+    - -Wincomplete-record-updates
+    - -Wincomplete-uni-patterns
+    - -Wredundant-constraints
+    - -XEmptyCase
+    - -XInstanceSigs
+    - -XLambdaCase
+    - -XMultiWayIf
+    - -XNamedFieldPuns
+    - -XTupleSections
+    - -XBangPatterns
+    - -XKindSignatures
+    - -XTypeOperators
+    - -XOverloadedStrings
+    - -XScopedTypeVariables
+    - -XTypeApplications
+    - -XApplicativeDo
+    - -XDeriveGeneric
+    - -XDataKinds
+    - -XDerivingVia
+    - -XRecordWildCards
+    - -XDeriveFunctor
+    - -XDeriveTraversable
+    - -XOverloadedLabels
+    - -XFlexibleInstances
+    - -XFlexibleContexts
+    - -XMultiParamTypeClasses
+    - -XGADTs
+    - -XTypeFamilies
+    - -XAllowAmbiguousTypes
+    - -XConstraintKinds
+    - -XStandaloneKindSignatures
+    - -XStandaloneDeriving
+
+library:
+  source-dirs: src
+  dependencies:
+    - name: base
+      version: ">= 4.7 && < 5"
+      mixin: &base-mixin
+        - hiding (Prelude)
+    - name: relude
+      mixin: &relude-mixin
+        - (Relude as Prelude)
+
+executables:
+  MerzbowNumberVis-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - MerzbowNumberVis
+    - name: base
+      version: ">= 4.7 && <5"
+      mixin: *base-mixin
+    - name: relude
+      mixin: *relude-mixin
+
+tests:
+  MerzbowNumberVis-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - MerzbowNumberVis

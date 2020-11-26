@@ -1,0 +1,100 @@
+cabal-version: 2.0
+
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           MerzbowNumberVis
+version:        0.1.0.0
+synopsis:       HTML templated visualisation of Merzbow-adjacency via Discogs data.
+category:       Web
+homepage:       https://github.com/githubuser/MerzbowNumberVis#readme
+bug-reports:    https://github.com/githubuser/MerzbowNumberVis/issues
+author:         Tilde Rose
+maintainer:     t1lde@protonmail.com
+copyright:      2020 Tilde Rose
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/MerzbowNumberVis
+
+library
+  exposed-modules:
+      App
+      Discogs.Exception
+      Discogs.Request
+      Discogs.Types
+      Lib
+  other-modules:
+      Paths_MerzbowNumberVis
+  hs-source-dirs:
+      src
+  ghc-options: -O2 -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -XEmptyCase -XInstanceSigs -XLambdaCase -XMultiWayIf -XNamedFieldPuns -XTupleSections -XBangPatterns -XKindSignatures -XTypeOperators -XOverloadedStrings -XScopedTypeVariables -XTypeApplications -XApplicativeDo -XDeriveGeneric -XDataKinds -XDerivingVia -XRecordWildCards -XDeriveFunctor -XDeriveTraversable -XOverloadedLabels -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses -XGADTs -XTypeFamilies -XAllowAmbiguousTypes -XConstraintKinds -XStandaloneKindSignatures -XStandaloneDeriving
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , deriving-aeson
+    , exceptions
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , relude
+    , text
+  mixins:
+      base hiding (Prelude)
+    , relude (Relude as Prelude)
+  default-language: Haskell2010
+
+executable MerzbowNumberVis-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_MerzbowNumberVis
+  hs-source-dirs:
+      app
+  ghc-options: -O2 -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -XEmptyCase -XInstanceSigs -XLambdaCase -XMultiWayIf -XNamedFieldPuns -XTupleSections -XBangPatterns -XKindSignatures -XTypeOperators -XOverloadedStrings -XScopedTypeVariables -XTypeApplications -XApplicativeDo -XDeriveGeneric -XDataKinds -XDerivingVia -XRecordWildCards -XDeriveFunctor -XDeriveTraversable -XOverloadedLabels -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses -XGADTs -XTypeFamilies -XAllowAmbiguousTypes -XConstraintKinds -XStandaloneKindSignatures -XStandaloneDeriving -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      MerzbowNumberVis
+    , aeson
+    , base >=4.7 && <5
+    , bytestring
+    , deriving-aeson
+    , exceptions
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , relude
+    , text
+  mixins:
+      base hiding (Prelude)
+    , relude (Relude as Prelude)
+  default-language: Haskell2010
+
+test-suite MerzbowNumberVis-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_MerzbowNumberVis
+  hs-source-dirs:
+      test
+  ghc-options: -O2 -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -XEmptyCase -XInstanceSigs -XLambdaCase -XMultiWayIf -XNamedFieldPuns -XTupleSections -XBangPatterns -XKindSignatures -XTypeOperators -XOverloadedStrings -XScopedTypeVariables -XTypeApplications -XApplicativeDo -XDeriveGeneric -XDataKinds -XDerivingVia -XRecordWildCards -XDeriveFunctor -XDeriveTraversable -XOverloadedLabels -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses -XGADTs -XTypeFamilies -XAllowAmbiguousTypes -XConstraintKinds -XStandaloneKindSignatures -XStandaloneDeriving -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      MerzbowNumberVis
+    , aeson
+    , bytestring
+    , deriving-aeson
+    , exceptions
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , text
+  default-language: Haskell2010
