@@ -6,8 +6,7 @@ import Deriving.Aeson
 import Data.Kind
 import GHC.TypeLits
 
-type DiscogsJSONEncoding :: Symbol -> Type -> Type
-type DiscogsJSONEncoding prefix =
+type DiscogsJSONEncoding (prefix :: Symbol) =
   CustomJSON
   '[ TagSingleConstructors
    , FieldLabelModifier (StripPrefix prefix, CamelToSnake)

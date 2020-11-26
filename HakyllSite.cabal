@@ -1,0 +1,97 @@
+cabal-version: 2.0
+
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           HakyllSite
+version:        0.1.0.0
+synopsis:       Personal Site
+author:         Tilde Rose
+maintainer:     t1lde@protonmail.com
+copyright:      2020 Tilde Rose
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+library
+  exposed-modules:
+      App
+      Discogs.Exception
+      Discogs.Request
+      Discogs.Types
+      Lib
+  other-modules:
+      Paths_HakyllSite
+  hs-source-dirs:
+      src
+  ghc-options: -O2 -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -XEmptyCase -XInstanceSigs -XLambdaCase -XMultiWayIf -XNamedFieldPuns -XTupleSections -XBangPatterns -XKindSignatures -XTypeOperators -XOverloadedStrings -XScopedTypeVariables -XTypeApplications -XApplicativeDo -XDeriveGeneric -XDataKinds -XDerivingVia -XRecordWildCards -XDeriveFunctor -XDeriveTraversable -XOverloadedLabels -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses -XGADTs -XTypeFamilies -XAllowAmbiguousTypes -XConstraintKinds -XStandaloneDeriving
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , deriving-aeson
+    , exceptions
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , relude
+    , text
+  mixins:
+      base hiding (Prelude)
+    , relude (Relude as Prelude)
+  default-language: Haskell2010
+
+executable MerzbowNumberVis-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_HakyllSite
+  hs-source-dirs:
+      app
+  ghc-options: -O2 -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -XEmptyCase -XInstanceSigs -XLambdaCase -XMultiWayIf -XNamedFieldPuns -XTupleSections -XBangPatterns -XKindSignatures -XTypeOperators -XOverloadedStrings -XScopedTypeVariables -XTypeApplications -XApplicativeDo -XDeriveGeneric -XDataKinds -XDerivingVia -XRecordWildCards -XDeriveFunctor -XDeriveTraversable -XOverloadedLabels -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses -XGADTs -XTypeFamilies -XAllowAmbiguousTypes -XConstraintKinds -XStandaloneDeriving -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HakyllSite
+    , aeson
+    , base >=4.7 && <5
+    , bytestring
+    , deriving-aeson
+    , exceptions
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , relude
+    , text
+  mixins:
+      base hiding (Prelude)
+    , relude (Relude as Prelude)
+  default-language: Haskell2010
+
+executable site
+  main-is: Site.hs
+  other-modules:
+      Paths_HakyllSite
+  ghc-options: -O2 -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -XEmptyCase -XInstanceSigs -XLambdaCase -XMultiWayIf -XNamedFieldPuns -XTupleSections -XBangPatterns -XKindSignatures -XTypeOperators -XOverloadedStrings -XScopedTypeVariables -XTypeApplications -XApplicativeDo -XDeriveGeneric -XDataKinds -XDerivingVia -XRecordWildCards -XDeriveFunctor -XDeriveTraversable -XOverloadedLabels -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses -XGADTs -XTypeFamilies -XAllowAmbiguousTypes -XConstraintKinds -XStandaloneDeriving -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HakyllSite
+    , aeson
+    , base >=4.7 && <5
+    , bytestring
+    , deriving-aeson
+    , exceptions
+    , hakyll
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , pandoc
+    , relude
+    , text
+  mixins:
+      base hiding (Prelude)
+    , relude (Relude as Prelude)
+  default-language: Haskell2010

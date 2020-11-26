@@ -1,2 +1,5 @@
 .stack-work/
 *~
+fonts/
+_cache/
+_site/

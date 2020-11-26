@@ -1,6 +1,5 @@
-name:                MerzbowNumberVis
+name:                HakyllSite
 version:             0.1.0.0
-github:              "githubuser/MerzbowNumberVis"
 license:             BSD3
 author:              "Tilde Rose"
 maintainer:          "t1lde@protonmail.com"
@@ -11,8 +10,7 @@ extra-source-files:
 - ChangeLog.md
 
 # Metadata used when publishing your package
-synopsis:            HTML templated visualisation of Merzbow-adjacency via Discogs data.
-category:            Web
+synopsis:            Personal Site
 
 dependencies:
 - mtl
@@ -59,7 +57,6 @@ ghc-options:
     - -XTypeFamilies
     - -XAllowAmbiguousTypes
     - -XConstraintKinds
-    - -XStandaloneKindSignatures
     - -XStandaloneDeriving
 
 library:
@@ -82,20 +79,24 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - MerzbowNumberVis
+    - HakyllSite
     - name: base
       version: ">= 4.7 && <5"
       mixin: *base-mixin
     - name: relude
       mixin: *relude-mixin
-
-tests:
-  MerzbowNumberVis-test:
-    main:                Spec.hs
-    source-dirs:         test
+  site:
+    main:                Site.hs
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - MerzbowNumberVis
+    - HakyllSite
+    - name: base
+      version: ">= 4.7 && <5"
+      mixin: *base-mixin
+    - name: relude
+      mixin: *relude-mixin
+    - hakyll
+    - pandoc

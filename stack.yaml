@@ -1,7 +1,9 @@
-resolver: nightly-2020-11-23
+nix:
+  enable: true
+  shell-file: shell.nix
+
+resolver: lts-16.23
 
 packages:
 - .
 extra-deps:
-- aeson-deriving-0.1.1.2
-
