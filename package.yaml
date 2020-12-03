@@ -22,6 +22,7 @@ dependencies:
 - bytestring
 - text
 - exceptions
+- time
 
 ghc-options:
     - -O2
@@ -58,6 +59,9 @@ ghc-options:
     - -XAllowAmbiguousTypes
     - -XConstraintKinds
     - -XStandaloneDeriving
+    - -XPolyKinds
+    - -XFunctionalDependencies
+    - -XRankNTypes
 
 library:
   source-dirs: src
@@ -71,7 +75,7 @@ library:
         - (Relude as Prelude)
 
 executables:
-  MerzbowNumberVis-exe:
+  GenDiscogsListData:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -87,6 +91,7 @@ executables:
       mixin: *relude-mixin
   site:
     main:                Site.hs
+    source-dirs:         site/src
     ghc-options:
     - -threaded
     - -rtsopts

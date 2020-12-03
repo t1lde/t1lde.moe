@@ -1,6 +1,7 @@
 nix:
   enable: true
-  shell-file: shell.nix
+  shell-file: stack_shell.nix
+  pure: true
 
 resolver: lts-16.23
 

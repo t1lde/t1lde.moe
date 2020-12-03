@@ -16,7 +16,7 @@ newtype ErrMsgShow err = ErrMsgShow err
 instance (Show err) => ErrMsg (ErrMsgShow err) where
   errMsg (ErrMsgShow err) = show err
 
-class (Typeable sub, Typeable super, Show sub, ErrMsg sub) => sub :< super where
+class (Typeable sub, Typeable super, Typeable (AnySub super), Show sub, ErrMsg sub) => sub :< super where
   toAnySub :: sub -> AnySub super
   fromAnySub :: AnySub super -> Maybe sub
   showErrMsg :: (IsString str) => (AnySub super) -> str
@@ -33,7 +33,7 @@ deriving instance Show (AnySub super)
 
 deriving via (ErrMsgShow (AnySub super)) instance (ErrMsg (AnySub super))
 
-instance (Typeable super) => Exception (AnySub super)
+instance (Typeable super, Typeable (AnySub super)) => Exception (AnySub super)
 
 data AppErr
 
