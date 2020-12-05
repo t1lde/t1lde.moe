@@ -2,14 +2,18 @@
 
 with nixpkgs;
 
+let
+    inter_web = import ./InterWeb.nix { inherit lib fetchzip; };
+in
+
 pkgs.stdenv.mkDerivation {
     inherit ghc;
     name = "stack_shell";
     buildInputs = [
-      pkgs.inter
+      inter_web
     ];
 
     shellHook = ''
-    export FONTS_PACKAGE_PATH=${pkgs.inter}
+    export FONTS_PACKAGE_PATH=${inter_web}
     '';
 }

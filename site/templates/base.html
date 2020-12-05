@@ -1,0 +1,45 @@
+--
+about_url: /about
+posts_url: /posts
+projects_url: /projects
+contact_url: /contacts
+--
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>$site_title$ - $title$</title>
+        <link rel="stylesheet" href="$css_path$/base.css" />
+        <link rel="stylesheet" href="$fonts_path$/fonts.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">$site_title$</a>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="$about_url$">About Me</a>
+                <a href="$posts_url$">Posts</a>
+                <a href="$projects_url$">Projects</a>
+                <a href="$contact_url$">Contact</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="mainbar">
+            $if(nopagetitle)$
+            $else$
+            ~/$path$
+            $endif$
+            </div>
+            $body$
+        </main>
+
+        $footer$
+    </body>
+</html>

@@ -23,6 +23,7 @@ dependencies:
 - text
 - exceptions
 - time
+- filepath
 
 ghc-options:
     - -O2
@@ -62,6 +63,7 @@ ghc-options:
     - -XPolyKinds
     - -XFunctionalDependencies
     - -XRankNTypes
+    - -XViewPatterns
 
 library:
   source-dirs: src
