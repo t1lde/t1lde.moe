@@ -1,0 +1,16 @@
+<article class="post_preview">
+  <header>
+    <a href=$post_url$>
+    <h1>$post_title$</h1>
+        $if(subtitle)$
+        <h2>$subtitle$</h2>
+        $endif$
+    <div class='date'>
+      Posted on: <time datetime=$post_date_utc$>$post_date_local$</time>
+    </div>
+    </a>
+  </header>
+  $post_preview$
+  <a href='$post_url$'>See More...</a>
+
+</article>

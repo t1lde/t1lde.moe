@@ -1,5 +1,6 @@
 --------------------------------------------------------------------------------
 import           Hakyll
+import System.FilePath
 --------------------------------------------------------------------------------
 import Prelude hiding (fromList)
 import qualified GHC.IO.Encoding as Enc
@@ -20,20 +21,36 @@ siteRules = do
 
     compileTemplates
 
-    match "pages/index.markdown" $ do
-      --route idRoute
-      route $ constRoute "index.html"
-      compileWithContext indexCtx (baseTemplate =<< indexPage)
+    match "pages/templated/index.markdown" $ do
+      route $ (setDirectory siteRootPath) `composeRoutes` (setExtension "html")
+      compileCtx (baseTemplate =<< indexPage)
 
     create [""] $ compile $ makeItem $ Redirect "index.html"
 
     match "pages/*.markdown" $ do
-      route $ (setExtension "html") `composeRoutes` (setDirectory "")
-      compileWithContext mempty (baseTemplate =<< (lift pandocCompiler))
+      route $ (setExtension "html") `composeRoutes` (setDirectory siteRootPath)
+      compileCtx (baseTemplate =<< (lift pandocCompiler))
 
-    match "templates/posts.markdown" $ do
-      route $ setExtension "html"
-      compileWithContext mempty (baseTemplate =<< postsPage)
+    match "pages/templated/posts.html" $ do
+      route $ (setDirectory siteRootPath)
+      compileCtx (baseTemplate =<< postsPage)
+
+    match "pages/templated/AdventOfCode.html" $ do
+      route $ (setDirectory (siteRootPath </> "AOC2020"))
+      compileCtx (baseTemplate =<< aocPage)
+
+    match "posts/*.markdown" $ do
+      route $ (setExtension "html") `composeRoutes` (setDirectory sitePostsPath)
+      compileCtx (baseTemplate =<< postPage)
+
+    match "posts/AOC/Day*.lhs" $ do
+      route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "AOC2020"))
+      compileCtx (baseTemplate =<< literateHaskellPage)
+
+
+    match ("posts/**.lhs" .&&. (complement "posts/AOC/Day*.lhs")) $ do
+      route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "haskell"))
+      compileCtx (baseTemplate =<< literateHaskellPage)
 
 
 
@@ -82,4 +99,3 @@ siteRules = do
 
     match "templates/*" $ compile templateBodyCompiler
 
-compileWithContext ctx compiler = compile $ runReaderT compiler ctx

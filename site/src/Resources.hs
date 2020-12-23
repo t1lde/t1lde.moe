@@ -3,6 +3,7 @@ module Resources
   ) where
 --------------------------------------------------------------------------------
 import Hakyll
+import System.FilePath
 --------------------------------------------------------------------------------
 import HakyllUtils
 import SiteConfig
@@ -18,7 +19,7 @@ siteResources =
 imageResources :: Rules ()
 imageResources =
   match "images/*" $ do
-    route   idRoute
+    route   (setDirectory siteImagesPath)
     compile copyFileCompiler
 
 fontResources :: Rules ()
@@ -27,11 +28,15 @@ fontResources = do
     route (setDirectory siteFontsPath)
     compile copyFileCompiler
 
-  match "fonts_/*.css" $
+  match (fromGlob "fonts_/woff2/*.woff2") $ do
+    route (setDirectory (siteFontsPath </> "woff2"))
+    compile copyFileCompiler
+
+  match ("fonts_/*.css") $
     compile getResourceBody
 
-  create ["fonts/fonts.css"] $ do
-    route idRoute
+  create ["fonts.css"] $ do
+    route (setDirectory siteFontsPath)
     compile $
       (loadAll @String "fonts_/*.css")
          >>= foldCompressCss
@@ -39,5 +44,5 @@ fontResources = do
 styleResources :: Rules ()
 styleResources =
   match "css/*" $ do
-    route   idRoute
+    route (setDirectory siteCssPath)
     compile compressCssCompiler

@@ -24,9 +24,10 @@ dependencies:
 - exceptions
 - time
 - filepath
+- binary
+- bifunctors
 
 ghc-options:
-    - -O2
     - -Wall
     - -Wcompat
     - -Wincomplete-record-updates
@@ -64,6 +65,7 @@ ghc-options:
     - -XFunctionalDependencies
     - -XRankNTypes
     - -XViewPatterns
+    - -XOverloadedLabels
 
 library:
   source-dirs: src
@@ -74,13 +76,14 @@ library:
         - hiding (Prelude)
     - name: relude
       mixin: &relude-mixin
-        - (Relude as Prelude)
+        - (Relude as Prelude, Relude.Extra.Foldable1, Relude.Extra.Type, Relude.Extra.Newtype, Relude.Extra.Map)
 
 executables:
   GenDiscogsListData:
     main:                Main.hs
     source-dirs:         app
-    ghc-options:
+    ghc-options: &exe-options
+    - -O0
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
@@ -91,13 +94,25 @@ executables:
       mixin: *base-mixin
     - name: relude
       mixin: *relude-mixin
+
+  advent:
+    main:          Runner.hs
+    source-dirs:  site/posts/AOC
+    ghc-options: *exe-options
+    dependencies:
+    - name: base
+      version: ">= 4.7 && <5"
+      mixin: *base-mixin
+    - name: relude
+      mixin: *relude-mixin
+    - containers
+    - unordered-containers
+    - split
+    - transformers
   site:
     main:                Site.hs
     source-dirs:         site/src
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+    ghc-options: *exe-options
     dependencies:
     - HakyllSite
     - name: base

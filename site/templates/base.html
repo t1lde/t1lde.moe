@@ -1,11 +1,3 @@
---
-about_url: /about
-posts_url: /posts
-projects_url: /projects
-contact_url: /contacts
---
-
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -13,20 +5,29 @@ contact_url: /contacts
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>$site_title$ - $title$</title>
-        <link rel="stylesheet" href="$css_path$/base.css" />
-        <link rel="stylesheet" href="$fonts_path$/fonts.css">
+        <link rel="stylesheet" href="$css_url$/base.css" />
+        <link rel="stylesheet" href="$fonts_url$/fonts.css">
     </head>
     <body>
+
         <header>
             <div class="logo">
                 <a href="/">$site_title$</a>
             </div>
-            <nav>
+            <nav aria-label="Site Menu">
                 <a href="/">Home</a>
                 <a href="$about_url$">About Me</a>
                 <a href="$posts_url$">Posts</a>
                 <a href="$projects_url$">Projects</a>
                 <a href="$contact_url$">Contact</a>
+            </nav>
+            <nav class="pins" aria-label="Pinned Links">
+                $for(pins)$
+                $if(pin_first)$
+                <div> >>> </div>
+                $endif$
+                <a href="$pin_url$">$pin$</a>
+                $endfor$
             </nav>
         </header>
 

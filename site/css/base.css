@@ -1,45 +1,135 @@
-
-
 html {
-  font-size: 62.5%;
+  --background_primary: #4b4b4b;
+  --background_secondary: #5d4e5c;
+
+  --header_background: #3d3540;
+
+  --accent: #a678d3;
+  --accent_saturated: #9730fd;
+
+  --main_background: #453e48;
+  --main_text: #d3d3d3;
+  --main_shadow: #48444a;
+  --main_shade_accent: #382f3b;
+
+  --code_background: #4a424d;
+  --code_shade: #403943;
+
+
+
+
+  height: 100%;
+  background: repeating-linear-gradient(
+    315deg,
+    var(--background_primary),
+    var(--background_primary) 30px,
+    var(--background_secondary) 30px,
+    var(--background_secondary) 60px
+  );
+
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  font-size: 1.6rem;
-  color: #d3d3d3;
-  text-rendering: optimizeLegibility;
-  background: #4b4b4b;
+  background: repeating-linear-gradient(
+    315deg,
+    var(--background_primary),
+    var(--background_primary) 40px,
+    var(--background_secondary) 40px,
+    var(--background_secondary) 80px
+  );
+
   font-family: "Inter";
-  height: 100%;
+  font-size: 16px;
+
+  color: var(--main_text);
+
+
+
+  margin: 0;
+  padding: 0;
+
   min-height: 100%;
 }
 
 
 header {
-  border-bottom: 0.1rem dashed #a678d3;
-  background-color: #363337;
+  background-color: var(--header_background);
   width: 100%;
+
+  margin: 0 0 2rem;
 }
 
 header a {
-  color: #a678d3;
+  color: var(--accent);
+
 }
 
 nav {
   text-align: right;
+  font-size: 0;
+
+  margin: 0;
+  text-align: right;
+
+  border-bottom: 0.1rem dashed var(--accent);
 }
 
 
 nav > a {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 300;
   text-decoration: none;
   text-transform: uppercase;
-  border-right: dashed 0.1rem #a678d3
+  border-left: dashed 0.1rem var(--accent);
+  display: inline;
 }
 
-nav > a:last-child {
-  border-right-style: none;
+nav > a:hover {
+  color: var(--accent_saturated);
+  border-bottom: solid 0.2rem var(--accent_saturated);
+  border-right: dashed 0.1rem var(--accent_saturated);
+  border-left: dashed 0.1rem var(--accent_saturated);
+}
+
+nav > a:hover:last-child {
+  border-right: none;
+}
+
+nav > a:hover + a {
+  border-left: 0;
+}
+
+nav > a:first-child {
+  border-left: 0;
+}
+
+.pins {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--main_background),
+    var(--main_background) 1.2rem,
+    var(--header_background) 1.2rem,
+    var(--header_background) 2.4rem
+  );
+
+  background-size: 150% 100%;
+  animation: pins_scroller 0.5s linear infinite;
+}
+
+@keyframes pins_scroller {
+  from {
+    background-position: -3.3941125497rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+.pins > div {
+  font-size: 1.4rem;
+  display: inline;
+  padding-right: 1em;
 }
 
 footer {
@@ -53,33 +143,43 @@ footer {
 
   margin-top: 4rem;
 
-  border-top: 0.1rem dashed #a678d3;
+  border-top: 0.1rem dashed var(--accent);
   font-size: 2rem;
+
+  text-align: right;
 
 }
 
 footer a {
-  color: #a678d3
+  color: var(--accent);
 }
 
 
-article .header {
-  font-size: 1.4rem;
-  font-style: italic;
-  color: #555;
+.logo {
+    margin: 0;
+    text-align: left;
+    float: left;
 }
 
 .logo a {
   font-size: 2rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
+  font-weight: 800;
+  letter-spacing: 0em;
   text-decoration: none;
+
+  line-height: 1em;
+
+  color: var(--accent_saturated);
+
+  margin-left: 2rem;
+
 }
 
 main {
-  color: #d6c3e9;
-  background-color: #404040;
-  border-top: 0.2rem outset #a678d3;
+  color: var(--main_text);
+  background-color: var(--main_background);
+
+  box-shadow: -2rem 2rem var(--main_shadow), inset 0.4rem 0 var(--main_shade_accent);
 
   margin-left: 4rem;
   margin-right: 4rem;
@@ -87,66 +187,269 @@ main {
   margin-bottom: 0;
 
   padding-left: 3rem;
-  padding-right: 0;
-  padding-top: 0.5rem;
+  padding-right: 3rem;
+  padding-top: 0;
   padding-bottom: 1rem;
 
-  min-height: 80%;
+  min-height: 45rem;
+  max-width: 80rem;
+
+  font-size: 1rem;
 
 }
 
 main > .mainbar {
-  margin-left: -3rem;
-  padding-left: 1rem;
 
+  --mainbar_font_size: 1.2rem;
+  --mainbar_vertical_pad: 0.3rem;
+
+  font-size: var(--mainbar_font_size);
+
+  margin-bottom: calc(3rem - calc(var(--mainbar_font_size) + calc(2* var(--mainbar_vertical_pad)))) ;
+  margin-left:   -3rem;
+  margin-right: -3rem;
+
+  padding-left: 1rem;
+  padding-top: var(--mainbar_vertical_pad);
+  padding-bottom: var(--mainbar_vertical_pad);
+
+
+  background: var(--header_background);
+
+  border-top: 0.1rem solid var(--accent);
+  border-bottom: 0.1rem dashed var(--accent);
+  box-shadow: inset 0.4rem 0 var(--main_shade_accent);
+  /*border-left: 0.1rem solid #3e3840;*/
+}
+
+main h1, h2, h3, h4 {
+  color: var(--accent);
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+main  p {
+  margin-bottom: 0.5rem;
+}
+
+main  h1 {
+  font-size: 2.4rem;
+}
+
+main > h1:first-of-type {
+  margin-top: 2.2rem;
+}
+
+main  h2 {
+  font-size: 1.6rem;
+}
+
+h1 ~ p {
+  padding-left: 1rem;
 }
 
 
-h1 {
-  font-size: 4rem;
-  font-weight: 700;
 
+h1 ~ h2, h3, h4 {
+  padding-left: 0.5rem;
+}
+
+article  {
   margin: 0;
 }
 
-h2 {
-  font-size: 2rem;
+main a {
+  color: var(--accent);
 }
 
-h1 + h2 {
-  margin: 0px;
-  padding-left: 3rem;
+article a:hover {
+  color: var(--accent_saturated);
 }
 
-@media (min-width: 0px) {
-  body {
-    margin: 0 0;
-    padding: 0;
+article > header {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  box-shadow: 0rem 0.8rem var(--main_shade_accent);
+}
+
+article > header h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+
+  padding: 0.5rem;
+  font-size: 2.4rem;
+}
+
+article > header h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+
+  padding: 0.5rem;
+  font-size: 2.2rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+article > header .date {
+
+  color: var(--main_text);
+  font-size: 0.8rem;
+  border-top: 0.1rem dashed var(--main_text);
+  padding-top: 0.5rem;
+}
+article > header .date > time {
+  font-size: 0.8rem;
+  font-weight: 200;
+}
+
+article.post_preview {
+  font-size: 80%;
+
+  padding: 1rem;
+  border-bottom: 0.1rem dashed var(--accent);
+
+}
+
+article.post_preview > header {
+  border: 0.1rem dashed var(--accent);
+}
+
+article.post_preview > header:hover {
+  border: 0.1rem dashed var(--accent_saturated);
+}
+
+article.post_preview > header:hover  h1 {
+  color: var(--accent_saturated);
+}
+
+article.post_preview > header > a {
+  text-decoration: none;
+}
+
+
+@media (max-width: 750px) {
+  nav a {
+    font-size: 1.0rem;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
-  header {
-    margin: 0 0 2rem;
-    padding: 1.0rem 0;
-  }
+
+
   nav {
-    margin: 0;
-    text-align: right;
+    padding: 0.5rem 0rem;
+  }
+
+  .logo a {
+    padding: 0.5rem 0rem;
+  }
+
+
+}
+
+@media (min-width: 600px) {
+  nav {
+    padding: 0.5rem 0rem;
   }
   nav a {
     padding-left: 1rem;
     padding-right: 1rem;
 
-    display: inline;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
   }
-  footer {
-    text-align: right;
-  }
-  .logo {
-    margin: 0;
-    text-align: left;
-  }
+
   .logo a {
-    margin-left: 2rem;
-    float: left;
+    padding: 0.5rem 0rem;
   }
+}
+
+
+article > .sourceCode {
+  margin-left: 1rem;
+  padding-left: 1.0rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-right: 1.0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background: var(--code_background);
+  box-shadow: 0rem 0.6rem var(--code_shade);
+  border: 1px dashed var(--accent);
+}
+
+input#imports_toggle ~ .sourceCode:first-of-type{
+  height: 0;
+  visibility: hidden;
+}
+
+#imports_toggle {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+}
+label[for=imports_toggle] {
+  font-weight: bold;
+}
+
+label[for=imports_toggle]:hover{
+  color: var(--accent);
+}
+
+input#imports_toggle:checked ~ label::before {
+  content:"Hide ";
+}
+
+input#imports_toggle ~ label::before {
+  content:"Show ";
+}
+
+input#imports_toggle:checked ~ .sourceCode {
+  height: unset;
+  visibility: unset;
+}
+
+.sourceCode {
+  margin:0;
+}
+
+.sourceCode + p {
+  margin-top: 1.5rem;
+}
+.sourceCode + .sourceCode {
+  margin-top: 0.5rem;
+}
+code {
+  font-family: "Iosevka Web";
+  --keyword: #7b5bbd;
+  --comment: #6c656e;
+
+}
+.haskell .dt {
+  color: var(--accent);
+  font-weight: 500;
+}
+.haskell .kw {
+  color: var(--keyword);
+  font-weight: 500;
+}
+.haskell .op {
+  color: var(--keyword);
+  font-weight: 600;
+}
+.haskell .co {
+  color: var(--comment);
+  font-style: italic;
 }
