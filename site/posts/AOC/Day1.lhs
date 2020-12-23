@@ -1,6 +1,8 @@
 -----------
 title: 'Day 1: Report Repair'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 1
 -----------
 
 > module Day1 (run1, run2) where
@@ -67,7 +69,7 @@ then combining it with each element in the tail
 >   rotations
 >     >>> (>>= (splitAt 1) >>> (uncurry $ liftA2 (,)))
 
-Now let's actually write the search. We need 2 values which add up to 2020, which we will multiply at the end/
+Now let's actually write the search. We need 2 values which add up to 2020, which we will multiply at the end.
 
 > run1 :: [String] -> Maybe (Int)
 > run1 =

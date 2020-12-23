@@ -16,8 +16,6 @@ html {
   --code_shade: #403943;
 
 
-
-
   height: 100%;
   background: repeating-linear-gradient(
     315deg,
@@ -68,7 +66,6 @@ header a {
 nav {
   text-align: right;
   font-size: 0;
-
   margin: 0;
   text-align: right;
 
@@ -115,6 +112,10 @@ nav > a:first-child {
 
   background-size: 150% 100%;
   animation: pins_scroller 0.5s linear infinite;
+}
+
+.pins .pin_label {
+  font-size: 1.0rem;
 }
 
 @keyframes pins_scroller {
@@ -192,7 +193,7 @@ main {
   padding-bottom: 1rem;
 
   min-height: 45rem;
-  max-width: 80rem;
+  max-width: 120ch;
 
   font-size: 1rem;
 
@@ -233,7 +234,7 @@ main  p {
 }
 
 main  h1 {
-  font-size: 2.4rem;
+  font-size: 2.4em;
 }
 
 main > h1:first-of-type {
@@ -244,15 +245,10 @@ main  h2 {
   font-size: 1.6rem;
 }
 
-h1 ~ p {
+article h1 ~ p {
   padding-left: 1rem;
 }
 
-
-
-h1 ~ h2, h3, h4 {
-  padding-left: 0.5rem;
-}
 
 article  {
   margin: 0;
@@ -282,7 +278,7 @@ article > header h1 {
   margin-right: 0;
 
   padding: 0.5rem;
-  font-size: 2.4rem;
+  font-size: 2.4em;
 }
 
 article > header h2 {
@@ -292,7 +288,7 @@ article > header h2 {
   margin-right: 0;
 
   padding: 0.5rem;
-  font-size: 2.2rem;
+  font-size: 2.2em;
   font-style: italic;
   font-weight: 500;
 }
@@ -310,7 +306,7 @@ article > header .date > time {
 }
 
 article.post_preview {
-  font-size: 80%;
+  font-size: 0.8em;
 
   padding: 1rem;
   border-bottom: 0.1rem dashed var(--accent);
@@ -334,28 +330,6 @@ article.post_preview > header > a {
 }
 
 
-@media (max-width: 750px) {
-  nav a {
-    font-size: 1.0rem;
-
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-
-  nav {
-    padding: 0.5rem 0rem;
-  }
-
-  .logo a {
-    padding: 0.5rem 0rem;
-  }
-
-
-}
 
 @media (min-width: 600px) {
   nav {
@@ -367,14 +341,85 @@ article.post_preview > header > a {
 
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-
   }
-
   .logo a {
     padding: 0.5rem 0rem;
   }
 }
 
+@media (max-width: 825px) {
+  nav a {
+    font-size: 1.0rem;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  main h1 {
+    font-size: 2.0em;
+  }
+
+  main h2 {
+    font-size: 1.6em;
+  }
+
+  article.post_preview {
+    font-size: 0.8rem;
+  }
+
+  html {
+    font-size: 80%
+  }
+
+  nav {
+    padding: 0.5rem 0rem;
+  }
+
+  .logo a {
+    padding: 0.5rem 0rem;
+  }
+
+
+}
+@media (max-width: 650px) {
+  html {
+    font-size: 60%;
+  }
+
+  main h1 {
+    font-size: 1.8rem;
+  }
+
+  main h2 {
+    font-size: 1.4rem;
+  }
+
+  article.post_preview {
+    font-size: 0.6rem;
+  }
+
+  .pins a {
+    display: inline-block;
+    border-bottom: 0.1rem dashed var(--accent);
+  }
+
+  .pins a:last-child {
+    border-bottom: 0;
+  }
+
+  .pins {
+    padding: 0;
+  }
+
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 50%;
+  }
+}
 
 article > .sourceCode {
   margin-left: 1rem;
@@ -387,6 +432,9 @@ article > .sourceCode {
   background: var(--code_background);
   box-shadow: 0rem 0.6rem var(--code_shade);
   border: 1px dashed var(--accent);
+  width: min-content;
+  max-width: 98ch;
+  overflow-x: auto;
 }
 
 input#imports_toggle ~ .sourceCode:first-of-type{
@@ -420,6 +468,44 @@ input#imports_toggle:checked ~ .sourceCode {
   height: unset;
   visibility: unset;
 }
+/*********************************************************************************/
+
+@media (max-width: 1080px) {
+  article > .sourceCode {
+    font-size: 0.8rem;
+    width: 80ch;
+  }
+}
+
+@media (max-width: 920px) {
+  article > .sourceCode {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  article > .sourceCode {
+    width: 70ch;
+  }
+}
+
+@media (max-width: 400px) {
+  article > .sourceCode {
+    width: 60ch;
+  }
+}
+
+@media (max-width: 350px) {
+  article > .sourceCode {
+    width: 50ch;
+  }
+}
+
+@media (max-width: 300px) {
+  article > .sourceCode {
+    width: 40ch;
+  }
+}
 
 .sourceCode {
   margin:0;
@@ -452,4 +538,34 @@ code {
 .haskell .co {
   color: var(--comment);
   font-style: italic;
+}
+
+/*********************************************************************************/
+
+main.Contact ul  {
+  list-style-type: none;
+}
+main.Contact li  {
+  border: 0.1rem dashed var(--accent);
+  padding-bottom: 0.8rem;
+  padding-left: 0.8rem;
+
+  margin-bottom: 1.5rem;
+}
+
+main.Contact li h2 {
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+main.Contact li a {
+  margin-left: 1rem;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+main.Contact li em {
+  margin-left: 1rem;
+  font-size: 1.4em;
+  font-weight: 300;
 }

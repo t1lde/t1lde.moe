@@ -1,6 +1,8 @@
 -----------
 title: 'Day 6: Custom Customs'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 6
 -----------
 
 > module Day6 where

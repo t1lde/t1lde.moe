@@ -24,14 +24,14 @@
             <nav class="pins" aria-label="Pinned Links">
                 $for(pins)$
                 $if(pin_first)$
-                <div> >>> </div>
+                <div class='pin_label'> Things you might want to take a look at: </div>
                 $endif$
                 <a href="$pin_url$">$pin$</a>
                 $endfor$
             </nav>
         </header>
 
-        <main role="main">
+        <main role="main" class="$title$">
             <div class="mainbar">
             $if(nopagetitle)$
             $else$

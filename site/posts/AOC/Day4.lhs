@@ -1,6 +1,8 @@
 -----------
 title: 'Overengineering Day 4 with type-level programming'
 subtitle: 'Day 4: Passport Processing - Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 4
 -----------
 
 > {-# LANGUAGE UndecidableInstances #-}
@@ -244,7 +246,7 @@ Let's just paste the fully evaluated type-family results (from ghci's `:kind!` c
 >                            ':|| (("malformed_BirthYear" ':? 'PMany ('Not 'WSpace))
 >                                  ':++ ('P 'WSpace ':|| 'End)))))))
 
-And the resulting captures from the expression (the Caps type-family is from the (RegexInTypes)[/haskell/RegexInTypes.html] module):
+And the resulting captures from the expression (the Caps type-family is from the [RegexInTypes](/haskell/RegexInTypes.html) module):
 
 > type PassportCaps' = Caps PassportExp'
 > type PassportCaps =
@@ -266,7 +268,7 @@ The validation for part 1 is simple, we just leave malformed Text as is:
 > type ValidPassport1' = ValidPassportRepr PassportFields
 > type ValidPassport1 = '[Text, Text, Text, Text, Text, Text, Text, Maybe(Text)]
 
-The `HasField` typeclass is implemented on our HList type (in the (RegexInTypes)[/haskell/RegexInTypes.html] module) to provide virtual field accesors.
+The `HasField` typeclass is implemented on our HList type (in the [RegexInTypes](/haskell/RegexInTypes.html) module) to provide virtual field accesors.
 We can build a Passport by extracting fields from the regex captures.
 
 > getFieldOrMalformed :: forall sym mal xs.

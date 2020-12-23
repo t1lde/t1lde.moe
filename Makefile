@@ -59,9 +59,9 @@ clean: clean_fonts clean_build
 
 clean_fonts: fonts_shell.nix InterWeb.nix
 	@echo 'Cleaning ./fonts_ folder'
-	@chown -R ${USER} ./site/fonts_
-	@chmod -R +rw ./site/fonts_
-	@rm -rf ./site/fonts_/*
+	@-chown -R ${USER} ./site/fonts_
+	@-chmod -R +rw ./site/fonts_
+	@-rm -rf ./site/fonts_/*
 
 clean_site:
 	stack exec site clean

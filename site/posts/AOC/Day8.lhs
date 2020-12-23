@@ -1,6 +1,8 @@
 -----------
 title: 'Day 8: Handheld Halting'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 8
 -----------
 
 

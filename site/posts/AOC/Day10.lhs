@@ -1,7 +1,8 @@
 ------------
 title: 'Day 10: Adapter Array'
 subtitle: 'Advent of Code 2020'
-sort: 12
+sort: 10
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
 ------------
 
 > module Day10 (run1, run2) where

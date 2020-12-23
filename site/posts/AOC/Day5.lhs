@@ -1,6 +1,8 @@
 -----------
 title: 'Day 5: Binary Boarding'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 5
 -----------
 
 > module Day5 where

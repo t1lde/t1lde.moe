@@ -1,6 +1,8 @@
 -----------
 title: 'Day 7: Handy Haversacks'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 7
 -----------
 
 > {-# LANGUAGE QuasiQuotes #-}

@@ -59,7 +59,7 @@ previewSeparator :: String
 previewSeparator = "<!--Preview-->"
 
 metadataTimeParams :: TimeFormatParams
-metadataTimeParams = (TimeFormatParams "%a %d %b %T %Z" Nothing Nothing)
+metadataTimeParams = (TimeFormatParams "%A %d %b %Y %T %Z" Nothing Nothing)
 
 outTimeFormat :: UTCTime -> String
 outTimeFormat =

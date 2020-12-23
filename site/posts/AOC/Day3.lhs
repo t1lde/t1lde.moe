@@ -1,6 +1,8 @@
 -----------
 title: 'Day 3: Toboggan Trajectory'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 3
 -----------
 
 > module Day3 (run1, run2) where

@@ -1,5 +1,7 @@
 -----------
 title: 'Type Level Programming in Haskell: Regex in Types'
+pin: 'Regex In Types'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
 -----------
 
 > {-# LANGUAGE UndecidableInstances #-}
@@ -22,11 +24,19 @@ title: 'Type Level Programming in Haskell: Regex in Types'
 > import Data.Ix (inRange)
 > import Text.Show
 > import Data.Char
+
 > --------------------------------------------------------------------------------
 > import Parser
 > --------------------------------------------------------------------------------
 
  <!--imports-->
+
+**TODO:** Actually document this somewhat... later.
+
+I fully acknowledge how cursed this is.
+
+***DO NOT UNDER ANY CIRCUMSTANCES*** try to compile this with optimisation on, it takes *forever*.
+
 
 > newtype (name :: Symbol) := (ty :: Type) = Named {eraseName :: ty}
 >   deriving (Semigroup, Monoid) via ty

@@ -1,6 +1,8 @@
 -----------
 title: 'Day 9: Encoding Error'
 subtitle: 'Advent of Code 2020'
+published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+sort: 9
 -----------
 
 > module Day9 (run1, run2) where
