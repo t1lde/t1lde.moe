@@ -38,7 +38,7 @@ baseTemplate item = ((lift .) relativizeUrls) =<< do
 --------------------------------------------------------------------------------
 footerCtx :: Context String
 footerCtx
-  = constField "site_repo" "a"
+  = constField "site_repo" siteRepo
 
 footerTemplate :: ReaderT (Context String) Compiler (Item String)
 footerTemplate = local (<> footerCtx) $

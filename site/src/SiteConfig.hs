@@ -18,8 +18,11 @@ siteConfig :: Configuration
 siteConfig = defaultConfiguration { providerDirectory = "./site/"}
 
 
-siteTitle :: FilePath
+siteTitle :: String
 siteTitle = "~"
+
+siteRepo :: String
+siteRepo = "https://gitlab.com/t1lde/t1lde.moe"
 
 siteRootPath :: FilePath
 siteRootPath = ""
