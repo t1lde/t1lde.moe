@@ -14,7 +14,6 @@ endif
 
 HASKELL_SOURCES := ./src ./app site/src/ package.yaml stack.yaml
 
-
 .PHONY: all
 
 all: generate_site

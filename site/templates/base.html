@@ -9,38 +9,40 @@
         <link rel="stylesheet" href="$fonts_url$/fonts.css">
     </head>
     <body>
-
-        <header>
-            <div class="logo">
+        <section class="grid_container">
+            <header class="logo">
                 <a href="/">$site_title$</a>
-            </div>
-            <nav aria-label="Site Menu">
+            </header>
+
+            <nav class="sitenav" aria-label="Site Menu">
                 <a href="/">Home</a>
                 <a href="$about_url$">About Me</a>
                 <a href="$posts_url$">Posts</a>
                 <a href="$projects_url$">Projects</a>
                 <a href="$contact_url$">Contact</a>
             </nav>
+
             <nav class="pins" aria-label="Pinned Links">
                 $for(pins)$
                 $if(pin_first)$
-                <div class='pin_label'> Things you might want to take a look at: </div>
+                    <section class='pin_label'> Things you might want to take a look at: </section>
                 $endif$
-                <a href="$pin_url$">$pin$</a>
+                    <a href="$pin_url$">$pin$</a>
                 $endfor$
             </nav>
-        </header>
 
-        <main role="main" class="$title$">
-            <div class="mainbar">
-            $if(nopagetitle)$
-            $else$
-            ~/$path$
-            $endif$
-            </div>
-            $body$
-        </main>
 
-        $footer$
+            <main role="main" class="$title$">
+                <div class="mainbar">
+                    $if(nopagetitle)$
+                    $else$
+                        ~/$path$
+                    $endif$
+                </div>
+                $body$
+            </main>
+
+            $footer$
+        </section>
     </body>
 </html>
