@@ -16,6 +16,7 @@ html {
   --code_background: #4a424d;
   --code_shade: #403943;
 
+  font-size: max(12px, 2vh);
 
   background: repeating-linear-gradient(
     315deg,
@@ -38,7 +39,6 @@ body {
   );
 
   font-family: "Inter";
-  font-size: 16px;
 
   color: var(--main_text);
 }
@@ -46,9 +46,11 @@ body {
 section.grid_container {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr) ;
-  grid-template-rows: 6vh 6vh 5vh auto 3vh 1fr;
+  grid-template-rows: 6vh auto 6vh auto 5vh auto 3vh 1fr;
   grid-template-areas:
     "logo nav  nav  nav  nav  nav  nav  nav  nav  nav  nav  nav "
+    "logo nav  nav  nav  nav  nav  nav  nav  nav  nav  nav  nav "
+    "pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin "
     "pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin "
     ".    .    .    .    .    .    .    .    .    .    .    .   "
     ".    main main main main main main main main .    .    .   "
@@ -73,30 +75,49 @@ header.logo a {
 }
 
 nav.sitenav {
-  font-size: 6vh;
+  box-sizing: border-box;
   grid-area: nav;
 
   background-color: var(--header_background);
-  border-bottom:
-    0.1rem
-    dashed
-    var(--accent);
-
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  font-size: 2vh;
+}
+
+#sitenav_pseudoborder {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 12;
+  border-bottom:
+    dashed
+    0.1rem
+    var(--accent);
+}
+
+#pins_pseudoborder {
+  grid-row: 4 / span 1;
+  grid-column: 1 / span 12;
+  margin-bottom: -0.1rem;
+  border-bottom:
+    dashed
+    0.1rem
+    var(--accent);
 }
 
 nav a {
-
+  box-sizing: border-box;
+  grid-column-end: span 1;
   font-size:
-    0.6em;
+    1.5rem;
 
   text-align: center;
 
   padding:
-    0.2em      /* top right bottom left*/
+    0.5rem      /* top right bottom left*/
     1rem
-    0.2em
+    0.5rem
     1rem;
 
   color: var(--accent);
@@ -108,12 +129,19 @@ nav a {
   text-transform:
     uppercase;
 
+  margin-top: 0.1rem;
+  margin-bottom: -0.1rem;
+  border-bottom:
+    dashed
+    0.1rem
+    var(--accent);
   border-left:
     dashed
     0.1rem
     var(--accent);
 
 }
+
 
 nav > a:hover {
   color: var(--accent_saturated);
@@ -136,16 +164,10 @@ nav > a:first-child {
 }
 
 .pins {
-  font-size: 6vh;
+
+  font-size: 2vh;
   grid-area: pin;
 
-  border-bottom:
-    0.1rem
-    dashed
-    var(--accent);
-
-  display: flex;
-  justify-content: right;
 
   background: repeating-linear-gradient(
     45deg,
@@ -154,6 +176,13 @@ nav > a:first-child {
     var(--header_background) 1.2rem,
     var(--header_background) 2.4rem
   );
+
+  box-shadow: 0 -0.1rem inset var(--main_background);
+
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   background-size: 150% 100%;
   animation: pins_scroller 0.5s linear infinite;
