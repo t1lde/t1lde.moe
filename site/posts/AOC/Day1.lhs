@@ -14,7 +14,6 @@ sort: 1
 > import qualified Data.IntMap.Strict as StrictIntMap
 > import qualified Data.Set as Set
 
- <!--imports-->
 
 Challenge 1
 ===

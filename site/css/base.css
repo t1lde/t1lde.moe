@@ -41,12 +41,13 @@ body {
   font-family: "Inter";
 
   color: var(--main_text);
+  margin: 0;
 }
 
 section.grid_container {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr) ;
-  grid-template-rows: 6vh auto 6vh auto 5vh auto 3vh 1fr;
+  grid-template-rows: 6vh auto 6vh auto 5vh auto 3vh auto;
   grid-template-areas:
     "logo nav  nav  nav  nav  nav  nav  nav  nav  nav  nav  nav "
     "logo nav  nav  nav  nav  nav  nav  nav  nav  nav  nav  nav "
@@ -59,6 +60,7 @@ section.grid_container {
 
   grid-gap: 0;
   margin: 0;
+  box-sizing: border-box;
 
 }
 header {
@@ -94,6 +96,7 @@ nav.sitenav {
     dashed
     0.1rem
     var(--accent);
+  z-index: 1;
 }
 
 #pins_pseudoborder {
@@ -104,6 +107,12 @@ nav.sitenav {
     dashed
     0.1rem
     var(--accent);
+  z-index: 1;
+
+}
+
+.pins nav a, .pins {
+  z-index: 2;
 }
 
 nav a {
@@ -141,7 +150,6 @@ nav a {
     var(--accent);
 
 }
-
 
 nav > a:hover {
   color: var(--accent_saturated);
@@ -217,10 +225,10 @@ footer {
   width: auto;
 
   border-top: 0.1rem dashed var(--accent);
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  font-size: 1.8rem;
+  padding: 0.6rem;
+  font-size: 1.4rem;
 
-  text-align: right;
+  text-align: left;
 }
 
 footer a {
@@ -254,6 +262,7 @@ main {
   box-shadow: -2rem 2rem var(--main_shadow), inset 0.4rem 0 var(--main_shade_accent);
   margin-bottom: 2rem;
   padding-bottom: 2rem;
+
   font-size: 1vw;
 
   display: grid;
@@ -299,15 +308,19 @@ main  h1 {
 }
 
 main > h1:first-of-type {
-  margin-top: 2.2rem;
+  margin-top: 2.2em;
 }
 
 main  h2 {
-  font-size: 1.6rem;
+  font-size: 1.6em;
+}
+
+main  h3 {
+  font-size: 1.3em;
 }
 
 article h1 ~ p {
-  padding-left: 1rem;
+  padding-left: 1em;
 }
 
 main > * {
@@ -320,6 +333,9 @@ article  {
   grid-row-end: span 1;
   grid-column: 2 / span 1;
 }
+article > p, main > p {
+  font-size: 1.2em;
+}
 
 main a {
   color: var(--accent);
@@ -330,32 +346,30 @@ article a:hover {
 }
 
 article > header {
+  padding: 1em;
 
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0rem 0.8rem var(--main_shade_accent);
+  margin-bottom: 2em;
+  box-shadow: 0rem 0.8em var(--main_shade_accent);
+  max-width: 80%;
 }
 
 article > header h1 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
 
-  padding: 0.5rem;
+  padding: 0.3em;
   font-size: 2.4em;
 }
 
 article > header h2 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
   margin-left: 0;
   margin-right: 0;
 
-  padding: 0.5rem;
+  padding: 0.3em;
   font-size: 2.2em;
   font-style: italic;
   font-weight: 500;
@@ -366,7 +380,7 @@ article > header .date {
   color: var(--main_text);
   font-size: 0.8rem;
   border-top: 0.1rem dashed var(--main_text);
-  padding-top: 0.5rem;
+  padding-top: 0.5em;
 }
 article > header .date > time {
   font-size: 0.8rem;
@@ -463,10 +477,11 @@ main.Contact li em {
 /********************************************************************************/
 
 article > .sourceCode {
-  margin-left: 1rem;
+  font-size: 1.4vmin
   padding-left: 1.0rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-left: 0.5rem;
   padding-right: 1.0rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -474,13 +489,15 @@ article > .sourceCode {
   box-shadow: 0rem 0.6rem var(--code_shade);
   border: 1px dashed var(--accent);
   width: min-content;
-  max-width: 98ch;
+  max-width: 80%;
   overflow-x: auto;
 }
 
 input#imports_toggle ~ .sourceCode:first-of-type{
   height: 0;
   visibility: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 #imports_toggle {
@@ -508,4 +525,10 @@ input#imports_toggle ~ label::before {
 input#imports_toggle:checked ~ .sourceCode {
   height: unset;
   visibility: unset;
+  padding-left: 1.0rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-right: 1.0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
