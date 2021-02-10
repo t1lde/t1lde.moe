@@ -15,7 +15,11 @@ import HakyllUtils
 --------------------------------------------------------------------------------
 
 siteConfig :: Configuration
-siteConfig = defaultConfiguration { providerDirectory = "./site/"}
+siteConfig
+  = defaultConfiguration
+  { providerDirectory = "./site/"
+  , previewHost = "0.0.0.0"
+  }
 
 
 siteTitle :: String

@@ -1,5 +1,7 @@
 ------------
 published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
+title: Parser.lhs
+subtitle: A Parser Combinator Library
 ------------
 
 > module Parser where
@@ -17,8 +19,6 @@ published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
 
  <!--imports-->
 
-Parser
-====
 
 This module is a lil' parser combinator I whipped up for Advent of Code 2020 challenges.
 The I didn't try very hard to make it complete, correct or fast, I just made it do what I needed.

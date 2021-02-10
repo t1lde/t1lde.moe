@@ -28,7 +28,16 @@ published: 'Wednesday 23 Dec 2020 05:31:10 GMT'
 > import Parser
 > --------------------------------------------------------------------------------
 
- <!--imports-->
+This module implements a type-level regular expression syntax, which 'compiles' to a parser using typeclasses to generate
+parser-combinator expressions corresponding to the regex primitives.
+
+I made this mostly for fun/masochistic challenge for [Advent of Code 2020](/AOC2020/AdventOfCode.html).
+
+See Also :
+
+  - [Day 4](/AOC2020/Day4.html) and [Day 7](/AOC2020/Day7.html) where I make use of this module.
+  - [Parser.lhs](/haskell/Parser.html)
+
 
 **TODO:** Actually document this somewhat... later.
 

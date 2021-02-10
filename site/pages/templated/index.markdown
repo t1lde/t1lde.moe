@@ -1,11 +1,11 @@
+<article>
 # Welcome
 
-## This site is currently under construction
+## To my website
 
-### Or rather...
+Currently all I have is the [Advent of Code](AOC2020/AdventOfCode.html) pages, but I have a few more ideas of what to put here... Wait and see!
 
-## I haven't figured out what to put on the homepage!
+Check [Projects](/projects.html) for thing's I am working on.
 
-## Do check out what I've got up so far:
 
-Currently all I have is the [Advent of Code](AOC2020/AdventOfCode.html) pages, but I have a few more ideas.
+</article>

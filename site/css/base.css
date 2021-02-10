@@ -16,7 +16,9 @@ html {
   --code_background: #4a424d;
   --code_shade: #403943;
 
-  font-size: max(12px, 2vh);
+  box-sizing: border-box;
+
+  font-size: 2vh;
 
   background: repeating-linear-gradient(
     315deg,
@@ -27,6 +29,9 @@ html {
   );
 
   text-rendering: optimizeLegibility;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -42,6 +47,7 @@ body {
 
   color: var(--main_text);
   margin: 0;
+  min-height: 100vh;
 }
 
 section.grid_container {
@@ -54,7 +60,7 @@ section.grid_container {
     "pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin "
     "pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin  pin "
     ".    .    .    .    .    .    .    .    .    .    .    .   "
-    ".    main main main main main main main main .    .    .   "
+    ".    main main main main main main main main main main .   "
     ".    .    .    .    .    .    .    .    .    .    .    .   "
     "foot foot foot foot foot foot foot foot foot foot foot foot";
 
@@ -82,42 +88,74 @@ nav.sitenav {
 
   background-color: var(--header_background);
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-direction: row;
   flex-wrap: wrap;
 
   font-size: 2vh;
 }
 
+nav a {
+  z-index 1;
+}
+
 #sitenav_pseudoborder {
-  grid-row: 2 / span 1;
+  z-index: 3;
+  grid-row: 3 / span 1;
   grid-column: 1 / span 12;
-  border-bottom:
+  border-top:
     dashed
-    0.1rem
+    1px
     var(--accent);
-  z-index: 1;
+  height: 0;
+
+  margin-top:-1px;
+}
+
+#sitenav_pseudoborder2 {
+  z-index: 2;
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 12;
+  border-top:
+    solid
+    1px
+    var(--header_background);
+  height: 0;
+
+  margin-top:-1px;
 }
 
 #pins_pseudoborder {
-  grid-row: 4 / span 1;
+  height: 0;
+  grid-row: 5 / span 1;
   grid-column: 1 / span 12;
-  margin-bottom: -0.1rem;
-  border-bottom:
+  margin-top:-1px;
+  border-top:
     dashed
-    0.1rem
+    1px
     var(--accent);
-  z-index: 1;
+  z-index: 3;
 
 }
 
-.pins nav a, .pins {
+#pins_pseudoborder2 {
+  height: 0;
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 12;
+  margin-top:-1px;
+  border-top:
+    solid
+    1px
+    var(--main_background);
   z-index: 2;
+
 }
+
 
 nav a {
-  box-sizing: border-box;
   grid-column-end: span 1;
+  height: 6vh;
+  overflow: clip;
   font-size:
     1.5rem;
 
@@ -137,45 +175,58 @@ nav a {
     none;
   text-transform:
     uppercase;
-
+  /*
   margin-top: 0.1rem;
   margin-bottom: -0.1rem;
+  */
   border-bottom:
     dashed
-    0.1rem
+    1px;
     var(--accent);
   border-left:
     dashed
-    0.1rem
+    1px;
     var(--accent);
 
 }
 
 nav > a:hover {
+  z-index: 4;
+
+  font-size:
+    1.5rem;
   color: var(--accent_saturated);
-  border-right: dashed 0.1rem var(--accent_saturated);
-  border-left: dashed 0.1rem var(--accent_saturated);
-  border-bottom: solid 0.2rem var(--accent_saturated);
-  margin-bottom: -0.1rem;
+  border-left: dashed 1px var(--accent_saturated);
+  margin-left: -1px;
+  border-right: dashed 1px var(--accent_saturated);
+  margin-right: -1px;
+  border-bottom: solid 3px var(--accent_saturated);
+}
+
+nav > a:hover:before {
+  content: "";
+  margin-left: 1px;
 }
 
 nav > a:hover:last-child {
   border-right: none;
+  margin-right: 0;
 }
 
+
 nav > a:hover + a {
-  border-left: 0;
+
 }
 
 nav > a:first-child {
   border-left: 0;
 }
 
-.pins {
+
+nav.pins {
 
   font-size: 2vh;
   grid-area: pin;
-
 
   background: repeating-linear-gradient(
     45deg,
@@ -188,22 +239,12 @@ nav > a:first-child {
   box-shadow: 0 -0.1rem inset var(--main_background);
 
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-direction: row;
   flex-wrap: wrap;
 
   background-size: 150% 100%;
   animation: pins_scroller 0.5s linear infinite;
-}
-
-.pins .pin_label {
-  font-size: 1.0rem;
-
-  padding:
-    0.5rem      /* top right bottom left*/
-    1rem
-    0.5rem
-    1rem;
 }
 
 @keyframes pins_scroller {
@@ -254,33 +295,38 @@ footer a {
 
 main {
   grid-area: main;
+  overflow-wrap: break-word;
+  overflow: hidden;
+
 
   color: var(--main_text);
   background-color: var(--main_background);
   min-height: 50vh;
 
-  box-shadow: -2rem 2rem var(--main_shadow), inset 0.4rem 0 var(--main_shade_accent);
+  box-shadow: -4vw 4vw var(--main_shadow), inset 8px 0 var(--main_shade_accent);
+  padding-bottom: 1rem;
   margin-bottom: 2rem;
-  padding-bottom: 2rem;
 
-  font-size: 1vw;
+  font-size: 18px;
 
   display: grid;
 
-  grid-template-columns: 1vw 1fr 1vw;
-  grid-template-rows: 2.5rem auto;
-  grid-column-gap: 5vh;
+  grid-template-columns: 1fr 14fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 0;
+
 }
 
 
 main > .mainbar {
   grid-row: 1 / span 1;
   grid-column: 1 / span 3;
+  height: min-content;
 
-  --mainbar_font_size: 1.2rem;
-  --mainbar_vertical_pad: 0.5rem;
+  --mainbar_font_size: max(1.8vh, 8px);
+  --mainbar_vertical_pad: max(0.25vh, 4px);
 
-  padding-left: 1rem;
+  padding-left: 1em;
   padding-top: var(--mainbar_vertical_pad);
   padding-bottom: var(--mainbar_vertical_pad);
 
@@ -288,27 +334,27 @@ main > .mainbar {
 
   background: var(--header_background);
 
-  border-top: 0.1rem solid var(--accent);
-  border-bottom: 0.1rem dashed var(--accent);
-  box-shadow: inset 0.4rem 0 var(--main_shade_accent);
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px dashed var(--accent);
+  box-shadow: inset 8px 0 var(--main_shade_accent);
 }
+
 
 main h1, h2, h3, h4 {
   color: var(--accent);
   margin-bottom: 0;
-  margin-top: 1rem;
 }
 
 main  p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 
 main  h1 {
-  font-size: 2.4em;
+  font-size: 2.2em;
 }
 
 main > h1:first-of-type {
-  margin-top: 2.2em;
+  margin-top: 2.0rem;
 }
 
 main  h2 {
@@ -319,16 +365,9 @@ main  h3 {
   font-size: 1.3em;
 }
 
-article h1 ~ p {
-  padding-left: 1em;
-}
-
-main > * {
-  grid-column: 2 / span 1;
-  grid-row-end: span 1;
-  grid-column: 2 / span 1;
-}
-article  {
+main > article  {
+  overflow: hidden;
+  overflow-wrap: break-word;
   margin-top: 3vh;
   grid-row-end: span 1;
   grid-column: 2 / span 1;
@@ -350,7 +389,6 @@ article > header {
 
   margin-bottom: 2em;
   box-shadow: 0rem 0.8em var(--main_shade_accent);
-  max-width: 80%;
 }
 
 article > header h1 {
@@ -360,7 +398,7 @@ article > header h1 {
   margin-right: 0;
 
   padding: 0.3em;
-  font-size: 2.4em;
+  font-size: min(2.4em, 6vw);
 }
 
 article > header h2 {
@@ -393,7 +431,7 @@ article.post_preview {
   border-bottom: 0.1rem dashed var(--accent);
 
 }
-
+/*
 article.post_preview > header {
   border: 0.1rem dashed var(--accent);
 }
@@ -401,7 +439,7 @@ article.post_preview > header {
 article.post_preview > header:hover {
   border: 0.1rem dashed var(--accent_saturated);
 }
-
+*/
 article.post_preview > header:hover  h1 {
   color: var(--accent_saturated);
 }
@@ -477,7 +515,7 @@ main.Contact li em {
 /********************************************************************************/
 
 article > .sourceCode {
-  font-size: 1.4vmin
+  font-size: max(1.4vmin, 12px);
   padding-left: 1.0rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -488,10 +526,11 @@ article > .sourceCode {
   background: var(--code_background);
   box-shadow: 0rem 0.6rem var(--code_shade);
   border: 1px dashed var(--accent);
-  width: min-content;
-  max-width: 80%;
+
   overflow-x: auto;
+  overflow-wrap: none;
 }
+
 
 input#imports_toggle ~ .sourceCode:first-of-type{
   height: 0;
@@ -531,4 +570,36 @@ input#imports_toggle:checked ~ .sourceCode {
   padding-right: 1.0rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+/********************************************************************************/
+article.aboutme {
+  font-size: 1.6rem;
+}
+article.aboutme > ul {
+  padding: 0;
+}
+article.aboutme > ul > li {
+  list-style-type: "";
+}
+article.aboutme > ul > li {
+  margin: 0.5em;
+  padding: 0;
+
+  box-shadow: inset 0 -4px var(--header_background), inset 4px 0 var(--header_background);
+}
+article.aboutme li > h1 {
+  font-size: 1.2em;
+  background-color: var(--header_background);
+  padding: 0.25em 0.5em 0.3em 0.5em;
+  margin: 0;
+  box-shadow: 0 4px var(--main_shade_accent), inset 4px 0 var(--main_shade_accent);
+}
+article.aboutme li > * {
+  font-size: 1em;
+  margin: 0;
+  padding: 0.5em 0.5em 0.6em 0.5em;
+}
+article.aboutme ul > li > ul {
+  list-style-position: inside;
+  padding: 0.5em;
 }
