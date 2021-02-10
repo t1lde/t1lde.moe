@@ -6,7 +6,7 @@ title: Projects
 
 ## Complete Project Pages:
 
-- [##Advent of Code 2020](/AOC2020/AdventOfCode.html)
+- [Advent of Code 2020](/AOC2020/AdventOfCode.html)
 
 
 ## WIP:
