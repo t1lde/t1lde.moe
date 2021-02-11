@@ -2,7 +2,7 @@
 title: About Me
 ---
 
-<article class="aboutme">
+<article class="datalist">
 - # Name
 
   Tilde Rose

@@ -484,33 +484,6 @@ code {
 
 /*********************************************************************************/
 
-main.Contact ul  {
-  list-style-type: none;
-}
-main.Contact li  {
-  border: 0.1rem dashed var(--accent);
-  padding-bottom: 0.8rem;
-  padding-left: 0.8rem;
-
-  margin-bottom: 1.5rem;
-}
-
-main.Contact li h2 {
-  font-weight: 300;
-  margin-bottom: 1rem;
-}
-
-main.Contact li a {
-  margin-left: 1rem;
-  font-size: 1.4em;
-  font-weight: 500;
-}
-
-main.Contact li em {
-  margin-left: 1rem;
-  font-size: 1.4em;
-  font-weight: 300;
-}
 
 /********************************************************************************/
 
@@ -572,34 +545,41 @@ input#imports_toggle:checked ~ .sourceCode {
   padding-bottom: 0.5rem;
 }
 /********************************************************************************/
-article.aboutme {
-  font-size: 1.6rem;
+article.datalist {
+  font-size: clamp(10px, 1.4rem, 28px);
 }
-article.aboutme > ul {
+article.datalist > ul {
   padding: 0;
 }
-article.aboutme > ul > li {
+article.datalist > ul > li {
   list-style-type: "";
 }
-article.aboutme > ul > li {
+article.datalist > ul > li {
   margin: 0.5em;
   padding: 0;
 
   box-shadow: inset 0 -4px var(--header_background), inset 4px 0 var(--header_background);
 }
-article.aboutme li > h1 {
+article.datalist li > h1 {
   font-size: 1.2em;
   background-color: var(--header_background);
   padding: 0.25em 0.5em 0.3em 0.5em;
   margin: 0;
   box-shadow: 0 4px var(--main_shade_accent), inset 4px 0 var(--main_shade_accent);
 }
-article.aboutme li > * {
-  font-size: 1em;
+article.datalist li > * {
+  font-size: 0.8em;
   margin: 0;
-  padding: 0.5em 0.5em 0.6em 0.5em;
+  padding: 0.6em 0.6em 0.6em 0.6em;
+  display: block;
 }
-article.aboutme ul > li > ul {
+
+article.datalist a {
+  font-family: "Iosevka Web";
+  font-size: 1.4em;
+  font-weight: 600;
+}
+article.datalist ul > li > ul {
   list-style-position: inside;
   padding: 0.5em;
 }
