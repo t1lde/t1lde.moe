@@ -8,8 +8,10 @@ title: Projects
 
 - [Advent of Code 2020](/AOC2020/AdventOfCode.html)
 
+- [Dissertation Project](/dissertation.html)
 
-## WIP:
+## Work in Progress Projects:
+
 - ## Website Hakyll source code and utilities:
 
   I've ended up hacking on this site in a monorepo containing several Stack sub-packages for WIP projects/pages... 

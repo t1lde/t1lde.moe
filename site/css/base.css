@@ -557,7 +557,6 @@ article.datalist > ul > li {
 article.datalist > ul > li {
   margin: 0.5em;
   padding: 0;
-
   box-shadow: inset 0 -4px var(--header_background), inset 4px 0 var(--header_background);
 }
 article.datalist li > h1 {
