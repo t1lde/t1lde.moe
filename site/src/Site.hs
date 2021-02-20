@@ -43,7 +43,7 @@ siteRules = do
       route $ (setExtension "html") `composeRoutes` (setDirectory sitePostsPath)
       compileCtx (baseTemplate =<< postPage)
 
-    match "posts/AOC/Day*.lhs" $ do
+    match "deps_/AOC/Day*.lhs" $ do
       route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "AOC2020"))
       compileCtx (baseTemplate =<< literateHaskellPage)
 

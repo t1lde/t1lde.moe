@@ -2,6 +2,8 @@
 *~
 fonts/
 site/fonts_
+site/deps_
 _cache/
 _site/
 dist-newstyle/
+result*

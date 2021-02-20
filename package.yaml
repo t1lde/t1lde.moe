@@ -67,58 +67,22 @@ ghc-options:
     - -XViewPatterns
     - -XOverloadedLabels
 
-library:
-  source-dirs: src
-  dependencies:
-    - name: base
-      version: ">= 4.7 && < 5"
-      mixin: &base-mixin
-        - hiding (Prelude)
-    - name: relude
-      mixin: &relude-mixin
-        - (Relude as Prelude, Relude.Extra.Foldable1, Relude.Extra.Type, Relude.Extra.Newtype, Relude.Extra.Map)
-
 executables:
-  GenDiscogsListData:
-    main:                Main.hs
-    source-dirs:         app
-    ghc-options: &exe-options
-    - -O0
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - HakyllSite
-    - name: base
-      version: ">= 4.7 && <5"
-      mixin: *base-mixin
-    - name: relude
-      mixin: *relude-mixin
-
-  advent:
-    main:          Runner.hs
-    source-dirs:  site/posts/AOC
-    ghc-options: *exe-options
-    dependencies:
-    - name: base
-      version: ">= 4.7 && <5"
-      mixin: *base-mixin
-    - name: relude
-      mixin: *relude-mixin
-    - containers
-    - unordered-containers
-    - split
-    - transformers
   site:
     main:                Site.hs
     source-dirs:         site/src
-    ghc-options: *exe-options
+    ghc-options:
+      - -O0
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - HakyllSite
-    - name: base
-      version: ">= 4.7 && <5"
-      mixin: *base-mixin
-    - name: relude
-      mixin: *relude-mixin
-    - hakyll
-    - pandoc
+      - name: base
+        version: ">= 4.7 && < 5"
+        mixin:
+          - hiding (Prelude)
+      - name: relude
+        mixin:
+          - (Relude as Prelude, Relude.Extra.Foldable1, Relude.Extra.Type, Relude.Extra.Newtype, Relude.Extra.Map)
+      - hakyll
+      - pandoc
