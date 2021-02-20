@@ -64,8 +64,8 @@ postsCtx = listField "posts" (bodyField "post_preview") (runReaderT allPreviews 
 allPreviews :: ReaderT (Context String) Compiler [Item String]
 allPreviews =
   (liftA2 (<>)
-    (local (<>postCtx) $ postPreviews "posts/**.markdown")
-    (local (<>literateHaskellCtx) $ postPreviews "posts/**.lhs"))
+    (local (<>postCtx) $ postPreviews allMarkdownPosts)
+    (local (<>literateHaskellCtx) $ postPreviews allLiteratePosts))
   >>= (lift <<< (mostRecentFirstMeta "published" metadataTimeParams))
 
 postPreviews :: Pattern -> ReaderT (Context String) Compiler [Item String]
@@ -120,7 +120,7 @@ literateHaskellPage =
 --------------------------------------------------------------------------------
 -- TODO: Use the tags system for this
 aocCtx :: Context String
-aocCtx = listField "posts" (bodyField "post_preview") ((runReaderT (postPreviews "posts/AOC/Day*.lhs") literateHaskellCtx) >>= (mostRecentFirstMeta "published" metadataTimeParams))
+aocCtx = listField "posts" (bodyField "post_preview") ((runReaderT (postPreviews "deps_/AOC/Day*.lhs") literateHaskellCtx) >>= (mostRecentFirstMeta "published" metadataTimeParams))
 
 aocPage :: ReaderT (Context String) Compiler (Item String)
 aocPage = local (<> aocCtx) $

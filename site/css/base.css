@@ -483,6 +483,26 @@ code {
 }
 
 /*********************************************************************************/
+hr {
+  border: 0;
+  border-top: 2px dashed var(--accent);
+  border-bottom: 4px solid var(--code_shade);
+  margin-top: 2rem;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 0.5em;
+}
+
+
 
 
 /********************************************************************************/

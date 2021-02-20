@@ -27,7 +27,7 @@ siteTitle = "~"
 
 siteRepo :: String
 siteRepo = "https://gitlab.com/t1lde/t1lde.moe"
-
+--------------------------------------------------------------------------------
 siteRootPath :: FilePath
 siteRootPath = ""
 
@@ -40,9 +40,14 @@ siteCssPath = siteRootPath </> "css"
 siteFontsPath :: FilePath
 siteFontsPath = siteRootPath </> "fonts"
 
+siteImagesPath :: FilePath
 siteImagesPath = siteRootPath </> "images"
-
+--------------------------------------------------------------------------------
+sitePostsPath :: FilePath
 sitePostsPath = siteRootPath </> "posts"
+
+siteDepsPath :: FilePath
+siteDepsPath = siteRootPath </> "deps_"
 
 aboutPagePath :: FilePath
 aboutPagePath = siteRootPath </> "aboutme.html"
@@ -55,10 +60,28 @@ projectsPagePath = siteRootPath </> "projects.html"
 
 contactPagePath :: FilePath
 contactPagePath = siteRootPath </> "contact.html"
-
+--------------------------------------------------------------------------------
 allPages :: Pattern
-allPages = (fromGlob "pages/**") .||. (fromGlob "posts/**")
+allPages
+  =    (fromGlob "pages/**")
+  .||. (fromGlob (sitePostsPath </> "**"))
+  .||. allDepsPages
 
+allDepsPages :: Pattern
+allDepsPages
+  =     (fromGlob (siteDepsPath </> "**.markdown"))
+  .||.  (fromGlob (siteDepsPath </> "**.lhs"))
+
+allMarkdownPosts :: Pattern
+allMarkdownPosts
+  =    (fromGlob (siteDepsPath </> "**.markdown"))
+  .||. (fromGlob (sitePostsPath </> "**.markdown"))
+
+allLiteratePosts :: Pattern
+allLiteratePosts
+  =    (fromGlob (siteDepsPath </> "**.lhs"))
+  .||. (fromGlob (sitePostsPath </> "**.lhs"))
+--------------------------------------------------------------------------------
 previewSeparator :: String
 previewSeparator = "<!--Preview-->"
 

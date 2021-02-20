@@ -39,7 +39,7 @@ siteRules = do
       route $ (setDirectory (siteRootPath </> "AOC2020"))
       compileCtx (baseTemplate =<< aocPage)
 
-    match "posts/*.markdown" $ do
+    match allMarkdownPosts $ do
       route $ (setExtension "html") `composeRoutes` (setDirectory sitePostsPath)
       compileCtx (baseTemplate =<< postPage)
 
@@ -47,8 +47,7 @@ siteRules = do
       route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "AOC2020"))
       compileCtx (baseTemplate =<< literateHaskellPage)
 
-
-    match ("posts/**.lhs" .&&. (complement "posts/AOC/Day*.lhs")) $ do
+    match (allLiteratePosts .&&. (complement "posts/AOC/Day*.lhs")) $ do
       route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "haskell"))
       compileCtx (baseTemplate =<< literateHaskellPage)
 
