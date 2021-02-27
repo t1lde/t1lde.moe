@@ -26,7 +26,7 @@ baseCtx = mconcat
   , bodyField "body"
   , constField "site_title" siteTitle
   , siteUrls
-  , pinsField "pins" allPages
+  , pinsField "pins" (allPages .&&. hasNoVersion)
   ]
 
 baseTemplate :: Item String -> ReaderT (Context String) Compiler (Item String)
@@ -70,7 +70,7 @@ allPreviews =
 
 postPreviews :: Pattern -> ReaderT (Context String) Compiler [Item String]
 postPreviews pat =
-  (lift $ loadAllSnapshots pat "preview")
+  (lift $ loadAllSnapshots (pat .&&. hasNoVersion) "preview")
     >>= (mapM (liftCtx $ loadAndApplyTemplate "templates/post_preview.html"))
 
 postsPage :: ReaderT (Context String) Compiler (Item String)
@@ -98,6 +98,24 @@ postPage =
       >>= (liftCtx $ loadAndApplyTemplate "templates/post.html")
 
 --------------------------------------------------------------------------------
+sourceInfoDefaultCtx :: Context String
+sourceInfoDefaultCtx = mconcat
+  [ field "source_onsite_url" getLiterateUrl
+  , constField "source_repo_url" siteRepo
+  , field "source_in_repo_url" $ urlInRepo siteRepo
+  ]
+  where
+    urlInRepo :: String -> Item a -> Compiler String
+    urlInRepo repoBase =
+      itemIdentifier
+        >>> toFilePath
+        >>> (toSiteUrl repoBase)
+        >>> pure
+    getLiterateUrl :: Item a -> Compiler String
+    getLiterateUrl =
+      itemIdentifier
+        >>> getRoute
+        >>> (>>= (maybe (empty @Compiler ) $ (pure <<< (toLiterateUrl siteRootUrl )) ))
 
 literateHaskellCtx :: Context String
 literateHaskellCtx = mconcat
@@ -107,7 +125,7 @@ literateHaskellCtx = mconcat
   , (dateMetaFieldFromUTC outTimeFormat "post_date_local" "published" metadataTimeParams)
   , (constField "post_preview" "...")--(teaserFieldWithSeparator previewSeparator "post_preview" "preview")
   , (bodyField "post_content")
-  , metadataField
+  , (metadataField <> sourceInfoDefaultCtx)
   ]
 
 literateHaskellPage :: ReaderT (Context String) Compiler (Item String)

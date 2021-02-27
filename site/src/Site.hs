@@ -47,9 +47,17 @@ siteRules = do
       route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "AOC2020"))
       compileCtx (baseTemplate =<< literateHaskellPage)
 
-    match (allLiteratePosts .&&. (complement "posts/AOC/Day*.lhs")) $ do
+    match "deps_/AOC/Day*.lhs" $ version "raw_lhs" $ do
+      route $ (setDirectory (siteRootPath </> "AOC2020"))
+      compile getResourceBody
+
+    match (allLiteratePosts .&&. (complement "deps_/AOC/Day*.lhs")) $ do
       route $ (setExtension "html") `composeRoutes` (setDirectory (siteRootPath </> "haskell"))
       compileCtx (baseTemplate =<< literateHaskellPage)
+
+    match (allLiteratePosts .&&. (complement "deps_/AOC/Day*.lhs")) $ version "raw_lhs" $ do
+      route $ (setDirectory (siteRootPath </> "haskell"))
+      compile getResourceBody
 
 
 

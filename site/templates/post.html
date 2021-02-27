@@ -4,9 +4,42 @@
         $if(subtitle)$
         <h2>$subtitle$</h2>
         $endif$
-        <div class='date'>
-            Posted on: <time datetime=$post_date_utc$>$post_date_local$</time>
-        </div>
+
+        <section class='header_info'>
+
+            <section class='date info_label'>
+                Posted on:
+            </section>
+
+            <time class='date info_data' datetime=$post_date_utc$>$post_date_local$</time>
+
+            $if(source_onsite_url)$
+            <section class='source_info info_label'>
+                Raw Source File :
+            </section>
+            <a class='source_info info_data' href=$source_onsite_url$  >
+                ~$source_onsite_url$
+            </a>
+            $endif$
+
+            $if(source_repo_url)$
+            <section class='source_info info_label'>
+                Source Repo :
+            </section>
+            <a class='source_info info_data' href=$source_repo_url$ >
+                $source_repo_url$
+            </a>
+            $endif$
+
+            $if(source_in_repo_url)$
+            <section class='source_info info_label'>
+                File in Repo :
+            </section>
+            <a class='source_info info_data' href=$source_in_repo_url$ >
+                $source_in_repo_url$
+            </a>
+            $endif$
+        </section>
     </header>
     $post_content$
 </article>

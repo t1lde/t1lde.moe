@@ -6,11 +6,12 @@ let
     inter_web = import ./InterWeb.nix { inherit lib fetchzip; };
     iosevka_web = import ./IosevkaWeb.nix { inherit lib fetchzip; };
     aoc_src = fetchgit {
-        url = "https://github.com/t1lde/AOC2020";
-        sha256 = "0wdk9xqxz7lyawrhr6c7r8jym9xs06qda78cw27khsamka58zq20";
-        rev = "9aaa0346234d4cf03043d2a8cd834e1102be3e02";
-        fetchSubmodules = true;
+        url = "https://github.com/t1lde/AOC2020/";
+        rev = "f43e05520acef90fdf678038d752229de158870e";
+        sha256 = "1hvb723psbhvc0nsk0lg52fi47g9y5qf882lmmgqzs4m1kjql7gs";
+        fetchSubmodules = false;
     };
+
 in
 
 {

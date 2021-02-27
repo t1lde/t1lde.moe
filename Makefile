@@ -74,7 +74,7 @@ clean_fonts: deps_shell.nix InterWeb.nix IosevkaWeb.nix
 
 clean_aoc: deps_shell.nix
 	@echo 'Cleaning ./site/deps_/AOC folder'
-	@-chown -R ${USER} /site/deps_/AOC
+	@-chown -R ${USER} ./site/deps_/AOC
 	@-chmod -R +rw ./site/deps_/AOC
 	@-rm -rf ./site/deps_/AOC/
 

@@ -413,17 +413,35 @@ article > header h2 {
   font-weight: 500;
 }
 
-article > header .date {
+article > header > .header_info {
+  display: grid;
+  grid-template-columns: auto auto;
 
   color: var(--main_text);
-  font-size: 0.8rem;
+  font-size: clamp(10px, 1.2vh, 22px);
+
+
   border-top: 0.1rem dashed var(--main_text);
   padding-top: 0.5em;
 }
-article > header .date > time {
-  font-size: 0.8rem;
+
+article > header > .header_info > .info_label {
+  grid-column: 1 / span 1;
+  margin-bottom: 0.3em;
+  margin-right: 1.2em;
+}
+
+article > header > .header_info > .info_data {
+  grid-column: 2 / span 1;
   font-weight: 200;
 }
+
+article > header > .header_info > a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 article.post_preview {
   font-size: 1.0em;

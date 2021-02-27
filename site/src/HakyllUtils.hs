@@ -125,6 +125,12 @@ dateFromField meta_name (TimeFormatParams meta_fmt meta_locale Nothing) =
     >>> (>>= (parseTimeM @(Compiler) @(ZonedTime) True (fromMaybe defaultTimeLocale meta_locale) meta_fmt))
     >>> (fmap $ zonedTimeToUTC)
 --------------------------------------------------------------------------------
-
 toSiteUrl :: FilePath -> FilePath -> String
 toSiteUrl = (</>)
+
+toExtension :: String -> FilePath -> String
+toExtension = flip replaceExtension
+
+toLiterateUrl :: FilePath -> FilePath -> String
+toLiterateUrl siteBase url = (siteBase </> url) -<.> "lhs"
+--------------------------------------------------------------------------------
